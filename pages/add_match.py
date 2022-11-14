@@ -56,7 +56,7 @@ class AddMatch(BasePage):
     general_label_xpath = '//*[@id="__next"]/div[1]/main/div[2]/form/div[2]/div/div[12]/div/label'
     general_field_xpath = '//input[@name="general"]'
 
-    # Xpath to Rating field
+# Xpath to Rating field
     rating_label_xpath = '//*[@id="__next"]/div[1]/main/div[2]/form/div[2]/div/div[13]/div/label'
     rating_field_xpath = '//input[@name="rating"]'
 
