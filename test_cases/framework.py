@@ -2,17 +2,18 @@ import os
 import unittest
 from selenium import webdriver
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
-from selenium.webdriver.edge.service import Service
+from selenium.webdriver.chrome.service import Service
 
 
 class Test(unittest.TestCase):
     s = Service(DRIVER_PATH)
-    driver = webdriver.Chrome(service=s)
+    driver = None
+
+    os.chmod(DRIVER_PATH, 755)
 
     @classmethod
     def setUp(self):
-        os.chmod(DRIVER_PATH, 755)
-        self.driver = webdriver.Chrome(executable_path=DRIVER_PATH)
+        self.driver = webdriver.Chrome(service=self.s)
         self.driver.get('https://scouts-test.futbolkolektyw.pl/en')
         self.driver.fullscreen_window()
         self.driver.implicitly_wait(IMPLICITLY_WAIT)
@@ -32,7 +33,7 @@ class TestMediumPage(unittest.TestCase):
     @classmethod
     def setUp(self):
         os.chmod(DRIVER_PATH, 755)
-        self.driver = webdriver.Chrome(executable_path=DRIVER_PATH)
+        self.driver = webdriver.Chrome(service=self.s)
         self.driver.get('https://medium.com/')
         self.driver.fullscreen_window()
         self.driver.implicitly_wait(IMPLICITLY_WAIT)
@@ -49,3 +50,5 @@ class TestMediumPage(unittest.TestCase):
     @classmethod
     def tearDown(self):
         self.driver.quit()
+
+

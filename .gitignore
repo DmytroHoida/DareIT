@@ -1,8 +1,9 @@
 # created by virtualenv automatically
 venv/Lib
-pages/add_player.py
 test_cases/__pycache__/
 test_cases/.pytest_cache
 
+utils/__pycache__/
+utils/
 
-projectCS50
+pages/__pycache__/
