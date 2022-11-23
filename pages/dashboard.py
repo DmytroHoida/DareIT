@@ -8,8 +8,10 @@ class Dashboard(BasePage):
     dashboard_url = "https://scouts-test.futbolkolektyw.pl/"
 
     def check_page_title(self):
-        time.sleep(5)
+        self.wait_for_element_to_be_clickable(self.shortcuts_container_add_player_link_xpath)
         assert self.get_page_title(self.dashboard_url) == self.expected_title
+
+
 
     # Xpaths to 4 boxes with counts at the top of the page
     four_count_boxes = '//*[@id="__next"]/div[1]/main/div[2]'

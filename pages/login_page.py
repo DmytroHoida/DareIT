@@ -9,6 +9,8 @@ class LoginPage(BasePage):
     expected_title = "Scouts panel - sign in"
     expected_text = "Scouts Panel"
     text_box_xpath = '//*[@id="__next"]/form/div/div[1]/h5'
+    error_message_xpath = '//*[@id="__next"]/form/div/div[1]/div[3]/span'
+    expected_error_message = 'Identifier or password invalid.'
 
     def type_in_email(self, email):
         self.field_send_keys(self.login_field_xpath, email)
@@ -25,3 +27,6 @@ class LoginPage(BasePage):
     def check_text_above_login_field(self):
         self.assert_element_text(self.driver, self.text_box_xpath, self.expected_text)
 
+    def check_error_message(self):
+        self.wait_for_element_to_be_clickable(self.sign_in_button_xpath)
+        self.assert_element_text(self.driver, self.error_message_xpath, self.expected_error_message)

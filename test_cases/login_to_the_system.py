@@ -32,7 +32,17 @@ class TestLoginPage(unittest.TestCase):
         user_login.click_on_sign_in_button()
         dashboard_page = Dashboard(self.driver)
         dashboard_page.check_page_title()
-        time.sleep(5)
+
+    def test_unsuccessful_log_in_to_the_system(self):
+        user_login = LoginPage(self.driver)
+        user_login.check_page_title()
+        user_login.check_text_above_login_field()
+        user_login.type_in_email("user07@getnada.com")
+        user_login.fill_in_password_with_text("4321-Test")
+        user_login.click_on_sign_in_button()
+        user_login.check_error_message()
+
+
 
     @classmethod
     def tearDown(self):
